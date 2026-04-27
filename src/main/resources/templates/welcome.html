@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.welcome}">Chào mừng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div class="flex justify-end mb-4 space-x-2">
+        <a href="?lang=vi" class="text-blue-500 hover:text-blue-700 text-sm font-semibold" th:text="#{lang.vi}">VI</a>
+        <span class="text-gray-400">|</span>
+        <a href="?lang=en" class="text-blue-500 hover:text-blue-700 text-sm font-semibold" th:text="#{lang.en}">EN</a>
+    </div>
+
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6" th:text="#{title.welcome}">Chào mừng đến với Todo App</h2>
+
+    <!--/*@thymesVar id="error" type="atmin.controller"*/-->
+    <div th:if="${error}" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline" th:text="${error}"></span>
+    </div>
+
+    <form th:action="@{/welcome}" method="post" class="space-y-4">
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="ownerName" th:text="#{label.ownerName}">Tên chủ sở hữu</label>
+            <input type="text" id="ownerName" name="ownerName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300" th:text="#{btn.start}">
+            Bắt đầu
+        </button>
+    </form>
+</div>
+
+</body>
+</html>
